@@ -1,4 +1,8 @@
 import { Routes } from '@angular/router';
+import { provideState } from '@ngrx/store';
+import { veggieListReducer } from './veggie-list/state/veggielist.reducer';
+import { VEGGIE_LIST_FEATURE_KEY } from './veggie-list/state/veggielist.state';
+import { veggieRoutes } from './veggie-list/veggie.routes';
 
 export const routes: Routes = [
     {
@@ -15,5 +19,9 @@ export const routes: Routes = [
     {
         path:'edituser',
         loadChildren: () => import('./edituser/edit.routes').then(mod => mod.editUserRoutes)
+    },
+    {
+        path : 'veggies',
+        loadChildren: () => import('./veggie-list/veggie.routes').then(mod => mod.veggieRoutes)
     }
 ];

@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row rowbottom-space">
+    <div class="col-md-2"></div>
+    <div class="col-md-8"></div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" (click)="navigateAddveggie()">
+        Add Veggie
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <table
+      class="table table-bordered table-striped"
+      *ngIf="veggieList$ | async as veggieList"
+    >
+      <thead>
+        <th>Id</th>
+        <th>VeggieName</th>
+        <th>Picture</th>
+        <th>price</th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let veggie of veggieList; let i = index">
+          <td>{{ veggie.id }}</td>
+          <td>{{ veggie.veggieName }}</td>
+          <td><img [src]="veggie.veggiePic" width="35" height="35" class="img" alt="Veggie Picture"></td>
+          <td>{{ veggie.price }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="selectedVeggie(veggie.id)"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="veggieList.length == 0">
+          <td colspan="5">
+            <span
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+              "
+            >
+              No Data found!
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

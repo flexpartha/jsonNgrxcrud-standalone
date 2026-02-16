@@ -8,9 +8,9 @@ export const getUsers = createSelector(getUserState, (state) => {
   return state.userList;
 });
 
-export const getUserById = createSelector(
+export const getUserById = (id: string) => createSelector(
   getUserState,
-  (state: userState, props: { id: string }) => {
-    return state.userList.find((user) => user.id === Number(props.id));
+  (state: userState) => {
+    return state.userList.find((user) => user.id === Number(id));
   }
 );

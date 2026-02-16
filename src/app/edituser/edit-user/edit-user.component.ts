@@ -29,7 +29,7 @@ export class EditUserComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       let id = params.get('id');
       this.store
-        .select(getUserById, { id: id ?? '' })
+        .select(getUserById(id ?? ''))
         .subscribe((selectedData) => {
           console.log('DATA', selectedData);
           if (selectedData) {
